@@ -189,7 +189,7 @@ If the system is isolated, that is if \(F\) is the only force acting on the syst
 <p>
 These equations are helpful when comparing classical harmonic oscillation to quantum harmonic oscillation, which I hope to showcase in the future. For now, I will not be going over the derivation of the velocity and position equations used, but if you would like to see where they come from check out this <a href="https://www.youtube.com/watch?v=yG_Ot9rsNaw" target="_blank">video</a>.
 </p>
-<h2>Elastic Potential Enegy in Simple Harmonic Motion</h2>
+<h2>Elastic Potential Energy in Simple Harmonic Motion</h2>
 
 <p>
   Elastic potential energy in a simple harmonic oscillator is modeled by the equation 
@@ -242,7 +242,7 @@ These equations are helpful when comparing classical harmonic oscillation to qua
   \]
 </p>
 <p>
-  As you can see, the first three terms are just a parabola, like elastic potential in simple harmonic motion. Since \(x_0\) is a minimum, \(U'\) goes from negative to positive about \(x_0\), meaning \(U'' > 0\). This means that \(U''(0)\) is a positive constant, which we can treat as the spring constant of a system in simple harmonic motion. We can use these first three terms of the Taylor series to approxomate a the potential at \(x_0\). 
+  As you can see, the first three terms are just a parabola, like elastic potential in simple harmonic motion. Since \(x_0\) is a minimum, \(U'\) goes from negative to positive about \(x_0\), meaning \(U'' > 0\). This means that \(U''(0)\) is a positive constant, which we can treat as the spring constant of a system in simple harmonic motion. Through using a Taylor series, we've shown that any potential, no matter how complicated, will reduce to a simple harmonic oscillator in the vicinity of a stable equilibrium point. 
 </p>
 <div class = "parameters">
   <h2>Please input values for the given parameters</h2>
@@ -282,8 +282,8 @@ These equations are helpful when comparing classical harmonic oscillation to qua
     <svg id="sine-chart" width="800" height="400"></svg>
     <div class="slider-container">
       <label for="speed-sin">Position Vs. Time Graph Speed:</label>
-      <input type="range" id="speed-sin" min="0.1" max="1" step="0.1" value="0.5">
-      <span id="speed-sin-value">0.5</span>
+      <input type="range" id="speed-sin" min="0.1" max="2" step="0.1" value="1">
+      <span id="speed-sin-value">1</span>
     </div>
   </div>
 
@@ -293,8 +293,8 @@ These equations are helpful when comparing classical harmonic oscillation to qua
     <svg id="cosine-chart" width="800" height="400"></svg>
     <div class="slider-container">
       <label for="speed-cos">Velocity vs. Time Graph Speed:</label>
-      <input type="range" id="speed-cos" min="0.1" max="1" step="0.1" value="0.5">
-      <span id="speed-cos-value">0.5</span>
+      <input type="range" id="speed-cos" min="0.1" max="2" step="0.1" value="1">
+      <span id="speed-cos-value">1</span>
     </div>
   </div>
 
