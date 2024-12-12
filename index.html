@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Simple Harmonic Oscillation</title>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <style>
+    body {
+      font-family: 'Times New Roman';
+      margin: 10;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: #ffffff;
+    }
+    svg {
+      background-color: #ffffff;
+      border: 1px solid #cccccc;
+      margin-bottom: 20px;
+    }
+    .controls {
+      margin-bottom: 20px;
+    }
+    label {
+      margin-right: 10px;
+    }
+    input[type="number"], input[type="range"] {
+      margin-right: 20px;
+    }
+    input[type="range"] {
+      width: 200px;
+      vertical-align: middle;
+    }
+    .slider-label {
+      display: inline-block;
+      width: 150px;
+    }
+    h3 {
+      margin-bottom: 5px;
+    }
+
+    
+    /* Style the Generate Animations button */
+    #generate {
+      font-size: 15px; /* Increase font size */
+      padding: 5px; /* Add padding for a larger button */
+      background-color: #d0d6dd; /* Button color */
+      color: rgb(0, 0, 0); /* Text color */
+      border: none; /* Remove border */
+      border-radius: 10px; /* Rounded corners */
+      cursor: pointer; /* Pointer cursor on hover */
+    }
+    .controls {
+      display: flex;
+      justify-content: center; /* Center horizontally */
+      align-items: center; /* Center vertically if needed */
+      margin: 20px 0; /* Add some spacing above and below */
+    }
+
+    input[type="number"] {
+      width: 80px; /* Set the desired width */
+      padding: 5px; /* Adjust padding for better aesthetics */
+      font-size: 14px; /* Adjust font size */
+      box-sizing: border-box; /* Ensure padding doesn't affect width */
+    }
+
+
+    #generate:hover {
+      background-color: #8fb3d8; /* Darker color on hover */
+    }
+  
+    /* Center all graphs and content */
+    .graph-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center; /* Center horizontally */
+      margin: 20px 0; /* Add spacing between graphs */
+    }
+  
+    svg {
+      display: block; /* Ensure SVGs behave like block elements */
+      margin: 0 auto; /* Center SVGs horizontally */
+    }
+  
+    h3 {
+      text-align: center; /* Center graph titles */
+    }
+  
+    /* Style the sliders */
+    .slider-container {
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    #info-section {
+      font-size: 16px; /* Set the base font size */
+      line-height: 1.6; /* Set line spacing */
+      color: #000000; 
+    }
+
+    #info-section h2 {
+      font-size: 20px; /* Larger font size for section headings */
+      margin-bottom: 10px; /* Add spacing below headings */
+    }
+
+    #info-section p {
+      margin-bottom: 15px; /* Add spacing between paragraphs */
+    }
+    .parameters {
+      display: flex;
+      flex-direction: column; /* Stack content vertically */
+      align-items: center; /* Center content horizontally */
+      justify-content: center; /* Center content vertically (optional) */
+      text-align: center; /* Center align text */
+      margin: 20px auto; /* Center the div itself and add spacing */
+      max-width: 600px; /* Optional: Set a maximum width for readability */
+    }
+
+    .art {
+      display: flex;
+      justify-content: center; /* Center content vertically (optional) */
+      margin: 20px auto; /* Center the div itself and add spacing */
+    }
+
+  </style>
+  
+</head>
+
+<body>
+  <section id="info-section">
+    <h2>Simple Harmonic Oscillation</h2>
+    <p>
+      A classical harmonic oscillator is a system where when displaced from its equilibrium position, it experiences a force \(F\) that is proportional to its displacement \(x\). A common example is a block attached to a spring that oscillates back and forth about an equilibrium position. This relationship is shown in Hooke's law, 
+    </p> 
+    <p>
+      \[
+      F(x) = -k x
+      \]
+    </p>
+    
+    <p>
+      where \(k\) is the spring constant of the system, a measure of how stiff the spring is. This relationship is shown in figure 4.
+    </p>
+
+<p>
+If the system is isolated, that is if \(F\) is the only force acting on the system, then the system is a <strong>simple harmonic oscillator</strong> and undergoes <strong>simple harmonic motion</strong>. In simple harmonic motion, the system experiences sinusoidal oscillation with a constant amplitude and period, as seen in figures 1 and 2. The equations used in figures 1 and 2 are in terms of the initial velocity, \(v_0\), which is not the standard way of displaying them. Normally, in simple harmonic oscillation, position as a function of time is written as 
+</p>
+<p>
+  \[
+  x(t) = A\sin(\omega t ) + B\cos(\omega t )
+  \]
+</p>
+<p>
+  and velocity as a function of time is written as 
+</p>
+<p>
+  \[
+  x'(t) = v(t) = A \omega \cos(\omega t ) - B \omega \sin(\omega t )
+  \]
+</p>
+<p>
+  where \(A\) and \(B\) are constants that depend on where the block is at \(t = 0\) and
+</p>
+<p>
+  \[
+  \omega = \sqrt{\frac{m}{k}},
+  \]
+  
+</p>
+<p>
+  the angular frequencey. The equations used in this simulation are
+</p>
+<p>
+  \[
+   x(t) = v_0 \cdot \omega \sin\left(\omega t\right)
+  \]
+</p>
+<p>
+  and
+</p>
+<p>
+  \[
+  x'(t) = v(t) = v_0 \cdot \cos\left(\omega t\right),
+  \]
+  position and velocity respectively.
+</p> 
+<p>
+These equations are helpful when comparing classical harmonic oscillation to quantum harmonic oscillation, which I hope to showcase in the future. For now, I will not be going over the derivation of the velocity and position equations used, but if you would like to see where they come from check out this <a href="https://www.youtube.com/watch?v=yG_Ot9rsNaw" target="_blank">video</a>.
+</p>
+<h2>Elastic Potential Enegy in Simple Harmonic Motion</h2>
+
+<p>
+  Elastic potential energy in a simple harmonic oscillator is modeled by the equation 
+</p>
+<p>
+  \[
+    U(x) = \frac{1}{2} k x^2.
+  \]
+</p>
+ <p>
+  This relationship is shown in figure 3, where a red ball oscillates about \(x = 0\), the equilibrium point of the system. The total energy of the system, 
+ </p>
+ <p>
+  \[
+    E_{total} = \frac{1}{2} m v_0 ^2,
+  \]
+ </p>
+ 
+ <p>
+  is represented as a horizontal line that intersects the parabola at 
+  \[
+  x = \pm \sqrt{\frac{m v_0^2}{k}}
+  .\]
+ </p> 
+ <p>
+ </p>
+ At these turning points the potential energy equals the total energy, meaning the kinetic energy is 0 and the system is at momentary rest. With this information, we can observe that as the potential energy of the system increases, the kinetic energy dencreases, and vice versa. This means that when the potential energy is 0, or at the equilibrium point, the system's total energy is equal to its kinetic energy. 
+</p>
+
+<h2>Applications of Simple Harmonic Motion</h2>
+
+<p>
+  When a system has a complex potential curve \(U(x)\) with multiple stable equilibrium points, as found in most physical systems, the potential in simple harmonic motion can become quite useful. Any potential curve can be expanded in powers of x around a stable equilibrium point using a Taylor series,
+</p> 
+
+<p>
+  \[
+  U(x-x_0) = U(x_0) + \frac{1}{2!} \cdot U''(x_0)(x-x_0)^2 + \frac{1}{3!} \cdot U'''(x_0)(x-x_0)^3...
+  \]
+</p>
+<p>
+  where \(x_0\) is an equilibrium point. \(U'(x_0) = 0,\) so we can ignore that term.
+</p>
+<p>
+  Now, if we take \(x_0\) to be \(0\), we get
+</p>
+<p>
+  \[
+  U(x) = U(0) + \frac{1}{2!} \cdot U''(0)(x)^2 ...
+  \]
+</p>
+<p>
+  As you can see, the first three terms are just a parabola, like elastic potential in simple harmonic motion. Since \(x_0\) is a minimum, \(U'\) goes from negative to positive about \(x_0\), meaning \(U'' > 0\). This means that \(U''(0)\) is a positive constant, which we can treat as the spring constant of a system in simple harmonic motion. We can use these first three terms of the Taylor series to approxomate a the potential at \(x_0\). 
+</p>
+<div class = "parameters">
+  <h2>Please input values for the given parameters</h2>
+  <p>
+  \(1 \leq k \leq 20\) 
+  </p>
+  <p>
+    \(0 \leq m \leq 10\) and is in \(kg\)
+  </p>
+  <p>
+    \(0 \leq v_0 \leq 2.25\) and is in \(\frac{m}{s}\) 
+  </p>
+  <p>
+    <strong>Enjoy!</strong>
+  </p>
+</div>
+
+    
+
+<body>
+  <div class="controls">
+    <label for="k">Spring Constant (\(k\)): </label>
+    <input type="number" id="k" value="3" step="0.1">
+  
+    <label for="m">Mass (\(m\)): </label>
+    <input type="number" id="m" value="2" step="0.1">
+  
+    <label for="v0">Initial Velocity (\(v_0\)): </label>
+    <input type="number" id="v0" value="1" step="0.1">
+  
+    <button id="generate">Generate Animations</button>
+  </div>
+
+  <!-- Sine Graph -->
+  <div class="graph-container">
+    <h3>Figure 1: Position vs. Time</h3>
+    <svg id="sine-chart" width="800" height="400"></svg>
+    <div class="slider-container">
+      <label for="speed-sin">Position Vs. Time Graph Speed:</label>
+      <input type="range" id="speed-sin" min="0.1" max="1" step="0.1" value="0.5">
+      <span id="speed-sin-value">0.5</span>
+    </div>
+  </div>
+
+  <!-- Cosine Graph -->
+  <div class="graph-container">
+    <h3>Figure 2: Velocity vs. Time</h3>
+    <svg id="cosine-chart" width="800" height="400"></svg>
+    <div class="slider-container">
+      <label for="speed-cos">Velocity vs. Time Graph Speed:</label>
+      <input type="range" id="speed-cos" min="0.1" max="1" step="0.1" value="0.5">
+      <span id="speed-cos-value">0.5</span>
+    </div>
+  </div>
+
+  <!-- Potential Energy Graph -->
+  <div class="graph-container">
+    <h3>Figure 3: Potential Energy vs. Position</h3>
+    <svg id="potential-energy-chart" width="800" height="400"></svg>
+  </div>
+
+  <!-- Force Graph -->
+  <div class="graph-container">
+    <h3>Figure 4: Force vs. Position</h3>
+    <svg id="force-chart" width="800" height="400"></svg>
+  </div>
+</body>
+
+
+  <script src="script.js"></script>
+</body>
+
+<div class="art">
+<body>
+  <p>
+    Created by Nahum Linhart. Checkout my artwork <a href="https://www.nahumlinhart.com/" target="_blank">here!</a>
+  </p>
+</body>
+</div>
+
+
