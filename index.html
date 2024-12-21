@@ -174,7 +174,7 @@ If the system is isolated, that is if \(F\) is the only force acting on the syst
 </p>
 <p>
   \[
-   x(t) = \frac{v_0}{\omega} \cdot \frac{1}{\omega} \cdot \sin\left(\omega t\right)
+   x(t) = \frac{v_0}{\omega} \cdot \sin\left(\omega t\right)
   \]
 </p>
 <p>
@@ -200,22 +200,68 @@ These equations are helpful when comparing classical harmonic oscillation to qua
   \]
 </p>
  <p>
-  This relationship is shown in figure 3, where a red ball oscillates about \(x = 0\), the equilibrium point of the system. The total energy of the system, 
+  This relationship is shown in figure 3, where a red ball oscillates about \(x = 0\), the equilibrium point of the system. The total energy of the system is 
  </p>
  <p>
   \[
-    E_{total} = \frac{1}{2} m v_0 ^2,
+    E_{total} = \frac{1}{2} m v_0 ^2.
   \]
  </p>
- 
  <p>
-  is represented as a horizontal line that intersects the parabola at 
+   To derive the total energy, we sum the potential and kinitic energies. We know that kinetic energy is
+ <p>
+  <p>
+    \[
+    K = \frac{1}{2} m v^2 = \frac{1}{2} m \frac{dx}{dt}^2 = \frac{1}{2} m (v_0 \cdot \cos\left(\omega t\right))^2
+    \]
+  </p>
+  <p>
+    and that the potential energy is
+  </p>
+  <p>
+    \[
+    U = \frac{1}{2} k x^2 = \frac{1}{2} k (\frac{v_0}{\omega} \cdot \sin\left(\omega t\right))^2.
+    \]  
+  </p>
+  <p>
+    Summing these, we get
+  </p>
+  <p>
+   \[
+    E_{total} = \frac{1}{2} m (v_0)^2 \cdot (\cos)^2\left(\omega t\right) +  \frac{1}{2} m (v_0)^2 \cdot (\sin)^2\left(\omega t\right).
+    \]
+  </p>
+  <p>
+    We can factor out the \(\frac{1}{2} m (v_0)^2\), getting
+  </p>
+  <p>
+   \[
+    E_{total} = \frac{1}{2} m (v_0)^2 \cdot ((\cos)^2\left(\omega t\right) +  (\sin)^2\left(\omega t\right)).
+    \]  
+  </p>
+  <p>
+    Recall that
+  </p>
+  <p>
+    \[
+    \sin^2(\theta) + \cos^2(\theta) = 1
+    \]  
+  </p>
+  <p>
+    so we can simplify our equation to
+  </p>
+  <p>
+    \[
+    E_{total} = \frac{1}{2} m v_0 ^2.
+    \]
+  </p>
+  <p>
+  The total energy is represented as a horizontal line that intersects the parabola at 
   \[
   x = \pm \sqrt{\frac{m v_0^2}{k}}
   .\]
  </p> 
  <p>
- </p>
  At these turning points the potential energy equals the total energy, meaning the kinetic energy is 0 and the system is at momentary rest. With this information, we can observe that as the potential energy of the system increases, the kinetic energy dencreases, and vice versa. This means that when the potential energy is 0, or at the equilibrium point, the system's total energy is equal to its kinetic energy. 
 </p>
 
