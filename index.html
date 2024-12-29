@@ -8,7 +8,7 @@
   <style>
     body {
       font-family: 'Times New Roman';
-      margin: 10;
+      margin: 10px;
       padding: 20px;
       display: flex;
       flex-direction: column;
@@ -37,9 +37,7 @@
       display: inline-block;
       width: 150px;
     }
-    h3 {
-      margin-bottom: 5px;
-    }
+  
 
     
     /* Style the Generate Animations button */
@@ -71,59 +69,98 @@
       background-color: #8fb3d8; /* Darker color on hover */
     }
   
-    /* Center all graphs and content */
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr); /* Two columns */
+      gap: 30px; /* Spacing between graphs */
+      margin: auto; /* Center the grid horizontally */
+      width: 95%; /* Adjust width to ensure responsiveness */
+      justify-content: center; /* Center the grid items horizontally */
+      align-items: center; /* Align items vertically */
+    }
+
     .graph-container {
       display: flex;
       flex-direction: column;
-      align-items: center; /* Center horizontally */
-      margin: 20px 0; /* Add spacing between graphs */
+      align-items: center; /* Center content within each graph container */
+      text-align: center;
     }
-  
+
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 0;
+      padding: 20px;
+    }
+
     svg {
-      display: block; /* Ensure SVGs behave like block elements */
-      margin: 0 auto; /* Center SVGs horizontally */
+      border: 1px solid #cccccc;
+      background-color: #ffffff;
     }
-  
+
     h3 {
-      text-align: center; /* Center graph titles */
+      margin-bottom: 10px;
     }
-  
-    /* Style the sliders */
+
+
     .slider-container {
       text-align: center;
       margin-top: 10px;
     }
 
     #info-section {
-      font-size: 16px; /* Set the base font size */
-      line-height: 1.6; /* Set line spacing */
+      font-size: 16px; 
+      line-height: 1.6; 
       color: #000000; 
+      margin: 40px 200px;
     }
 
     #info-section h2 {
-      font-size: 20px; /* Larger font size for section headings */
-      margin-bottom: 10px; /* Add spacing below headings */
+      font-size: 20px; 
+      margin-bottom: 10px;
+      text-align: center;
     }
 
     #info-section p {
-      margin-bottom: 15px; /* Add spacing between paragraphs */
+      margin-bottom: 15px; 
     }
     .parameters {
       display: flex;
-      flex-direction: column; /* Stack content vertically */
-      align-items: center; /* Center content horizontally */
-      justify-content: center; /* Center content vertically (optional) */
-      text-align: center; /* Center align text */
-      margin: 20px auto; /* Center the div itself and add spacing */
-      max-width: 600px; /* Optional: Set a maximum width for readability */
+      flex-direction: column; 
+      align-items: center; 
+      text-align: center; 
+      margin: 20px auto; 
+      max-width: 600px; 
     }
+
+  
+    #results-container {
+      text-align: center;
+      margin: 0 auto 20px auto; /* Center horizontally and add bottom margin */
+      padding: 10px;
+      background-color: #f9f9f9;
+      border: 1px solid #cccccc;
+      border-radius: 10px;
+      width: 60%; /* Reduce width for better centering */
+    }
+
+    #results-container p {
+      font-size: 16px;
+      margin: 5px 0;
+    }
+
+    #results-container span {
+      font-weight: bold;
+      color: #333;
+    }
+
 
     .art {
       display: flex;
-      justify-content: center; /* Center content vertically (optional) */
-      margin: 20px auto; /* Center the div itself and add spacing */
+      justify-content: center; 
+      margin: 20px auto; 
     }
-
   </style>
   
 </head>
@@ -132,7 +169,7 @@
   <section id="info-section">
     <h2>Simple Harmonic Oscillation</h2>
     <p>
-      A classical harmonic oscillator is a system where when displaced from its equilibrium position, it experiences a force \(F\) that is proportional to its displacement \(x\). A common example is a block attached to a spring that oscillates back and forth about an equilibrium position. This relationship is shown in Hooke's law, 
+      A classical harmonic oscillator is a system where when displaced from its equilibrium position, it experiences a force \(F\) that is proportional to its displacement \(x\). A common example is a mass attached to a spring that oscillates about an equilibrium point, shown in figure 6. This relationship is shown in Hooke's law, 
     </p> 
     <p>
       \[
@@ -141,7 +178,7 @@
     </p>
     
     <p>
-      where \(k\) is the spring constant of the system, a measure of how stiff the spring is. This relationship is shown in figure 4.
+      where \(k\) is the spring constant of the system, a measure of how stiff the spring is. Hooke's law is shown in figure 5, where a red point that corresponds to the movement of the mass in figure 6 travels along the linear curve. 
     </p>
 
 <p>
@@ -170,7 +207,7 @@ If the system is isolated, that is if \(F\) is the only force acting on the syst
   
 </p>
 <p>
-  the angular frequencey. The equations used in this simulation are
+  the angular frequency. The equations used in this simulation are
 </p>
 <p>
   \[
@@ -188,6 +225,30 @@ If the system is isolated, that is if \(F\) is the only force acting on the syst
 </p> 
 <p>
 These equations are helpful when comparing classical harmonic oscillation to quantum harmonic oscillation, which I hope to showcase in the future. For now, I will not be going over the derivation of the velocity and position equations used, but if you would like to see where they come from check out this <a href="https://www.youtube.com/watch?v=yG_Ot9rsNaw" target="_blank">video</a>.
+</p>
+
+<h2>Period and Frequency in Simple Harmonic Motion</h2>
+<p>
+  The period (\(T\)) is the time in seconds it takes for an oscillitory system to complete one oscillation. In a mass-spring system the period is expressed as
+</p>
+<p>
+  \[
+  T = 2\pi\sqrt\frac{m}{k}
+  \]
+</p>
+<p>
+  and is held constant in simple harmonic motion.
+</p>
+<p>
+  The frequency (\(f\)) is the amount of oscillations the system completes per unit time. The standard unit is hertz (Hz), the amount oscillations completed per second. Frequency is expressed as  
+</p>
+<p>
+  \[
+  f = \frac{1}{T} = \frac{1}{2\pi}\sqrt\frac{k}{m}
+  \]
+</p>
+<p>
+  and is also held constant in simple harmonic motion. 
 </p>
 <h2>Elastic Potential Energy in Simple Harmonic Motion</h2>
 
@@ -228,7 +289,7 @@ These equations are helpful when comparing classical harmonic oscillation to qua
   </p>
   <p>
    \[
-    E_{total} = \frac{1}{2} m v_0^2 \cdot \cos^2\left(\omega t\right) +  \frac{1}{2} m (v_0)^2 \cdot \sin^2\left(\omega t\right).
+    E_{total} = \frac{1}{2} m v_0^2 \cdot \cos^2\left(\omega t\right) +  \frac{1}{2} m v_0^2 \cdot \sin^2\left(\omega t\right).
     \]
   </p>
   <p>
@@ -262,7 +323,7 @@ These equations are helpful when comparing classical harmonic oscillation to qua
   .\]
  </p> 
  <p>
- At these turning points the potential energy equals the total energy, meaning the kinetic energy is 0 and the system is at momentary rest. With this information, we can observe that as the potential energy of the system increases, the kinetic energy decreases, and vice versa. This means that when the potential energy is 0, or at the equilibrium point, the system's total energy is equal to its kinetic energy. 
+  The relationship between the kinetic energy and potential energy of a system in simple harmonic motion is shown in figures 3 and 4. Like the red point on figure 5, the red points on figures 3 and 4 correspond to the movement of the mass in figure 6. When the red point is at \(x=0\), the potential energy of the system is zero. At the same time, the velocity of the system is at its greatest magnitude. Conversely, when the system is at its maximum displacement, the potential energy equals the total energy while the velocity equals zero. Since velocity is proportional to kinetic energy, we notice that as the potential energy decreases, the kinetic energy increases, and vice versa. Figures 3 and 4 showcase conservation of energy: the system oscillates from the total energy being equal to kinetic energy to the total energy being potential energy. 
 </p>
 
 <h2>Applications of Simple Harmonic Motion</h2>
@@ -291,18 +352,15 @@ These equations are helpful when comparing classical harmonic oscillation to qua
   As you can see, the first three terms are just a parabola, like elastic potential in simple harmonic motion. Since \(x_0\) is a minimum, \(U'\) goes from negative to positive about \(x_0\), meaning \(U'' > 0\). This means that \(U''(0)\) is a positive constant, which we can treat as the spring constant of a system in simple harmonic motion. Through using a Taylor series, we've shown that any potential, no matter how complicated, will reduce to a simple harmonic oscillator in the vicinity of a stable equilibrium point. 
 </p>
 <div class = "parameters">
-  <h2>Please input values for the given parameters</h2>
+  <h2>Input values for the given parameters</h2>
   <p>
-  \(1 \leq k \leq 20\) 
+  \(10 \leq k \leq 20\) 
   </p>
   <p>
-    \(0 \leq m \leq 10\) and is in \(kg\)
+    \(0 < m \leq 15\) and is in \(kg\)
   </p>
   <p>
-    \(0 \leq v_0 \leq 2.25\) and is in \(\frac{m}{s}\) 
-  </p>
-  <p>
-    <strong>Enjoy!</strong>
+    \(0 < v_0 \leq 2\) and is in \(\frac{m}{s}\) 
   </p>
 </div>
 
@@ -311,10 +369,10 @@ These equations are helpful when comparing classical harmonic oscillation to qua
 <body>
   <div class="controls">
     <label for="k">Spring Constant (\(k\)): </label>
-    <input type="number" id="k" value="3" step="0.1">
+    <input type="number" id="k" value="10" step="0.1">
   
     <label for="m">Mass (\(m\)): </label>
-    <input type="number" id="m" value="2" step="0.1">
+    <input type="number" id="m" value="5" step="0.1">
   
     <label for="v0">Initial Velocity (\(v_0\)): </label>
     <input type="number" id="v0" value="1" step="0.1">
@@ -322,41 +380,59 @@ These equations are helpful when comparing classical harmonic oscillation to qua
     <button id="generate">Generate Animations</button>
   </div>
 
-  <!-- Sine Graph -->
-  <div class="graph-container">
-    <h3>Figure 1: Position vs. Time</h3>
-    <svg id="sine-chart" width="800" height="400"></svg>
-    <div class="slider-container">
-      <label for="speed-sin">Position vs. Time Graph Speed:</label>
-      <input type="range" id="speed-sin" min="0.1" max="2" step="0.1" value="1">
-      <span id="speed-sin-value">1</span>
+  <div id="results-container">
+    <h3>Period and Frequency</h3>
+    <p id="calculated-period">Period (\(T\)): <span>-</span></p>
+    <p id="calculated-frequency">Frequency (\(f\)): <span>-</span></p>
+  </div>
+
+  <div class="grid-container">
+    <!-- Row 1: Sine and Cosine Graphs -->
+    <div class="graph-container">
+      <h3>Figure 1: Position vs. Time</h3>
+      <svg id="sine-chart" width="600" height="400"></svg>
+      <div class="slider-container">
+        <label for="speed-sin">Speed:</label>
+        <input type="range" id="speed-sin" min="0.1" max="1" step="0.1" value="0.5">
+        <span id="speed-sin-value">0.5</span>
+      </div>
     </div>
-  </div>
 
-  <!-- Cosine Graph -->
-  <div class="graph-container">
-    <h3>Figure 2: Velocity vs. Time</h3>
-    <svg id="cosine-chart" width="800" height="400"></svg>
-    <div class="slider-container">
-      <label for="speed-cos">Velocity vs. Time Graph Speed:</label>
-      <input type="range" id="speed-cos" min="0.1" max="2" step="0.1" value="1">
-      <span id="speed-cos-value">1</span>
+    <div class="graph-container">
+      <h3>Figure 2: Velocity vs. Time</h3>
+      <svg id="cosine-chart" width="600" height="400"></svg>
+      <div class="slider-container">
+        <label for="speed-cos">Speed:</label>
+        <input type="range" id="speed-cos" min="0.1" max="1" step="0.1" value="0.5">
+        <span id="speed-cos-value">0.5</span>
+      </div>
     </div>
-  </div>
 
-  <!-- Potential Energy Graph -->
-  <div class="graph-container">
-    <h3>Figure 3: Potential Energy vs. Position</h3>
-    <svg id="potential-energy-chart" width="800" height="400"></svg>
-  </div>
+    <!-- Row 2: Potential Energy and Velocity-Position Graphs -->
+    <div class="graph-container">
+      <h3>Figure 3: Potential Energy vs. Position</h3>
+      <svg id="potential-energy-chart" width="600" height="400"></svg>
+    </div>
 
-  <!-- Force Graph -->
-  <div class="graph-container">
-    <h3>Figure 4: Force vs. Position</h3>
-    <svg id="force-chart" width="800" height="400"></svg>
-  </div>
-</body>
+    <div class="graph-container">
+      <h3>Figure 4: Velocity vs. Position</h3>
+      <svg id="velocity-position-chart" width="600" height="400"></svg>
+    </div>
 
+    <!-- Row 3: Ball & Spring Simulation and Force Graph -->
+
+    <div class="graph-container">
+      <h3>Figure 5: Force vs. Position</h3>
+      <svg id="force-chart" width="600" height="400"></svg>
+    </div>
+
+
+    <div class="graph-container">
+      <h3>Figure 6: Mass-Spring System</h3>
+      <svg id="spring-simulation" width="500" height="500"></svg>
+    </div>
+
+  </div>
 
   <script src="script.js"></script>
 </body>
