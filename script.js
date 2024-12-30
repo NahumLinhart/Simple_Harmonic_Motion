@@ -252,8 +252,6 @@ function addAxesToVelocityPositionGraph() {
 }
 
 
-let globalTime = 0; // Shared global time for synchronization
-const globalSpeed = 0.175; // Speed multiplier for all animations
 
 function animateSpring(k, m, v0, data) {
   const svg = d3.select("#spring-simulation");
@@ -326,6 +324,10 @@ function animateSpring(k, m, v0, data) {
 
 
 
+let globalTime = 0; 
+const globalSpeed = 0.2; 
+let animationFrameId; 
+
 function stepAnimations(data, w, updateSpring) {
   function step() {
     globalTime += globalSpeed;
@@ -360,12 +362,11 @@ function stepAnimations(data, w, updateSpring) {
     // Synchronize the spring animation
     updateSpring(timeIndex, index, nextIndex, interpolationFactor);
 
-    requestAnimationFrame(step);
+    animationFrameId = requestAnimationFrame(step); // Store the frame ID
   }
 
   step();
 }
-
 
 addAxesToVelocityPositionGraph();
 
@@ -394,6 +395,14 @@ document.getElementById("generate").addEventListener("click", () => {
   document.getElementById("calculated-period").querySelector("span").textContent = `${T.toFixed(2)} s`;
   document.getElementById("calculated-frequency").querySelector("span").textContent = `${f.toFixed(2)} Hz`;
     
+  // Reset global time
+  globalTime = 0;
+
+  // Cancel any ongoing animations
+  if (animationFrameId) {
+    cancelAnimationFrame(animationFrameId);
+  }
+
   // Adjust the y-scale of the Potential Energy graph dynamically
  const maxPE = Math.max(...data.map(d => d.U)); // Maximum Potential Energy in the data
  const newYMax = Math.max(totalEnergy, maxPE) * 1.5; // Add a 20% buffer above the largest value
