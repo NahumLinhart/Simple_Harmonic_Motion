@@ -325,7 +325,7 @@ function animateSpring(k, m, v0, data) {
 
 
 let globalTime = 0; 
-const globalSpeed = 0.2; 
+const globalSpeed = 0.25; 
 let animationFrameId; 
 
 function stepAnimations(data, w, updateSpring) {
